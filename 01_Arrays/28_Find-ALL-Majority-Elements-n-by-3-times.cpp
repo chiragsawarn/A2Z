@@ -17,11 +17,53 @@
 // Space: O(n)
 
 // Optimal
+// Extended version of voting algo.
 
 #include <bits/stdc++.h>
 using namespace std;
 
+vector<int> majorityElement(vector<int>& nums) {
+    int count1 = 0, count2 = 0, n = nums.size();
+    int x, y;
 
+    for(int i=0; i<n; ++i){
+        if(count1 == 0 && y != nums[i]){
+            x = nums[i];
+        } else if(count2 == 0 && x != nums[i]){
+            y = nums[i];
+        }
+        
+        if(nums[i] == x){
+            ++count1;
+        }else if(nums[i] == y){
+            ++count2;
+        }else {
+            --count1;
+            --count2;
+        }
+    }
+
+    // verification of majority
+    count1 = 0;
+    count2 = 0;
+    for(int i=0; i<n; ++i){
+        if(nums[i] == x){
+            ++count1;
+        } else if(nums[i] == y){
+            ++count2;
+        }
+    }
+
+    vector<int> res;
+    if(count1 > n/3){
+        res.push_back(x);
+    }
+    if(count2 > n/3){
+        res.push_back(y);
+    }
+
+    return res;
+}
 
 int main(){
     
