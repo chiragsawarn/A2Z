@@ -18,6 +18,11 @@
 
 // Optimal
 // Extended version of voting algo.
+// Note: No of elements that may occur more than n/3 times can be a maximum of 2.
+// But there may be a single element or no element at all. Hence we must run one verification iteration over the array and count the freqency of our contest winners x and y.
+// If the count1 and count2 both come out to be more than n/3 then push them in the res array.
+// Time: O(2n)
+// Space: O(1)
 
 #include <bits/stdc++.h>
 using namespace std;
