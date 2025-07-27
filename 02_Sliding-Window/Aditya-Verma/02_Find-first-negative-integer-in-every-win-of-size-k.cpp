@@ -19,23 +19,21 @@ vector<int> FirstNegativeInteger(vector<int>& arr, int k) {
     int i=0,j=0,n=arr.size();
     
     while(j<n){
-        if(arr[j] < 0){
-            q.push(j);
-        }
-        while(j-i+1 > k){
+        if(arr[j] < 0) q.push(j); // Step 1: Expansion
+        while(j-i+1 > k){ // Step 2: Shrinking
             if(!q.empty() && q.front() == i){
                 q.pop();
             }
             ++i;
         }
-        if(j-i+1 == k){
+        if(j-i+1 == k){ // Step 3: Answer Calculation
             if(!q.empty()){
                 res.push_back(arr[q.front()]);
             } else {
                 res.push_back(0);
             }
         }
-        ++j;
+        ++j; // Step 1: Expansion
     }
     
     return res;
